@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render, redirect
 from django.views import View
 
@@ -17,11 +18,25 @@ class Index(View):
             products = Product.get_all_products_by_category_id(categoryID)
         else:
             products = Product.get_all_products()
+
+        # print('You are:', request.session.get('email'))
+
+        # pagination
+        paginator = Paginator(products, 1)
+        page = request.GET.get('page')
+        try:
+            products = paginator.page(page)
+        except PageNotAnInteger:
+            products = paginator.page(1)
+        except EmptyPage:
+            products = paginator.page(paginator.num_pages)
+
         data = {
             'products': products,
-            'categories': categories
+            'categories': categories,
+            'page': page
         }
-        # print('You are:', request.session.get('email'))
+
         return render(request, 'index.html', data)
 
     def post(self, request):
@@ -46,3 +61,13 @@ class Index(View):
         request.session['cart'] = cart
 
         return redirect('index')
+
+
+def search(request):
+    search_product = request.GET['search']
+    products = Product.objects.filter(name__icontains=search_product)
+    data = {
+        'products': products
+    }
+
+    return render(request, 'search.html', data)

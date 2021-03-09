@@ -23,6 +23,11 @@ class Login(View):
             if flag:
                 request.session['customer'] = customer.id
 
+                request.session['first_name'] = customer.first_name
+                request.session['last_name'] = customer.last_name
+                request.session['phone'] = customer.phone
+                request.session['email'] = customer.email
+
                 if Login.return_url:
                     return HttpResponseRedirect(Login.return_url)
                 else:
@@ -39,3 +44,11 @@ class Login(View):
 def logout(request):
     request.session.clear()
     return redirect('login')
+
+
+def profile(request):
+    return render(request, 'profile.html')
+
+
+def edit_profile(request):
+    return render(request, 'edit_profile.html')

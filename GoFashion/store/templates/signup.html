@@ -5,8 +5,9 @@
 
     <div class="container">
         <div class="p-4 m-4">
-            <div class="col-lg-5 mx-auto border rounded pt-4 pr-4 pl-4 pb-4">
+            <div class="col-lg-6 mx-auto border rounded pt-4 pr-4 pl-4 pb-4">
                 <h3 class="alert alert-light border rounded">Signup Here</h3>
+                <hr>
                 <form action="/signup" method="POST">
                     {% csrf_token %}
 
@@ -19,36 +20,38 @@
 
                     <!-- firstname -->
                     <div class="form-group">
-                        <label for="">First Name</label>
+                        <label for="">First Name*</label>
                         <input type="text" name="firstname" id="" value="{{ values.first_name }}" class="form-control form-control-sm" placeholder="Prajan">
                       </div>
 
                     <!-- lastname -->
                     <div class="form-group">
-                      <label for="">Last Name</label>
+                      <label for="">Last Name*</label>
                       <input type="text" name="lastname" id="" value="{{ values.last_name }}" class="form-control form-control-sm" placeholder="Shrestha">
                     </div>
 
                     <!-- phone -->
                     <div class="form-group">
-                        <label for="">Phone</label>
+                        <label for="">Phone*</label>
                         <input type="text" name="phone" id="" value="{{ values.phone }}" class="form-control form-control-sm" placeholder="9800000000">
                       </div>
 
                     <!-- email -->
                     <div class="form-group">
-                        <label for="">Email</label>
+                        <label for="">Email*</label>
                         <input type="email" name="email" id="" value="{{ values.email }}" class="form-control form-control-sm" placeholder="example@gmail.com">
                       </div>
 
                     <!-- password -->
                     <div class="form-group">
-                        <label for="">Password</label>
+                        <label for="">Password*</label>
                         <input type="password" name="password" id="" class="form-control form-control-sm" placeholder="*******">
                     </div>
+
+                    <hr>
                     <!-- button -->
                     <div class="form-group mx-auto">
-                        <input class="btn btn-sm btn-info col-lg-7" type="submit" value="Sign Up">
+                        <input class="btn btn-outline-info border rounded col-lg-7" type="submit" value="Sign Up">
                     </div>
                 </form>
             </div>

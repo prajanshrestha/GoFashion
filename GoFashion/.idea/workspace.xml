@@ -5,66 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21f1d10d-0504-4ca9-b2bb-6641e02eb760" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/GoFashion.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GoFashion/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GoFashion/asgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GoFashion/settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GoFashion/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GoFashion/wsgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/middlewares/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/middlewares/auth.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/migrations/0002_auto_20210220_1250.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/migrations/0003_product_category.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/migrations/0004_customer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/migrations/0005_order.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/migrations/0006_auto_20210223_1415.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/migrations/0007_auto_20210223_1438.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/migrations/0008_order_status.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/migrations/0009_auto_20210223_1551.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/models/category.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/models/customer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/models/orders.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/models/product.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/templates/cart.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/templates/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/templates/orders.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/templates/signup.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/templatetags/cart.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/templatetags/custom_filter_for_currency.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/views/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/views/cart.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/views/checkout.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/views/home.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/views/login.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/views/orders.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/views/signup.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/13e-1566285177.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/2e-1566373085.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/Dubarry-Waterford.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/cff24e4d9ff78c1678651b2ef7ceb49a.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/cff24e4d9ff78c1678651b2ef7ceb49a_Dy4SNX6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/cff24e4d9ff78c1678651b2ef7ceb49a_HfvKkaD.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/cff24e4d9ff78c1678651b2ef7ceb49a_MVsrfQe.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/plain_black_t_shirt_for_kids-r49455160aaf74c9480a7c8b521ffb21c_65ytt_704.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/s-l1600_2-500x700.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Images/2e-1566373085.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/templates/edit_profile.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/templates/pagination.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/templates/profile.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/templates/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GoFashion/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/GoFashion/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/templates/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/cart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/templates/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/views/checkout.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/views/checkout.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/views/home.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/views/home.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/views/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/views/login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/views/signup.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/views/signup.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,10 +61,11 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/store/views" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/store/templates" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Dikshya\Desktop\Prajan\FYP\GoFashion\GoFashion\store\templates" />
       <recent name="C:\Users\Dikshya\Desktop\Prajan\FYP\GoFashion\GoFashion\store\views" />
       <recent name="C:\Users\Dikshya\Desktop\Prajan\FYP\GoFashion\GoFashion\store\models" />
     </key>

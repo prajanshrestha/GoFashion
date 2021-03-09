@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<title>GoFashion-Profile</title>
+    <div class="container">
+        <div class="border rounded p-4 m-4">
+            <p class="display-4 pl-2 ml-2">Your Profile</p>
+            <hr>
+            <hr>
+            {{ request.session.first_name }}
+            <br>
+            {{ request.session.last_name }}
+            <br>
+            {{ request.session.phone }}
+            <br>
+            {{ request.session.email }}
+            <br>
+            <hr>
+
+            <!-- ckeckout button -->
+            <div class="m-3 p-3">
+                <a href="/edit-profile" class="btn btn-outline-info border rounded col-lg-4 float-left">Edit Profile</a>
+                <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-info border rounded col-lg-4 float-left">Reset Password</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+   

@@ -38,6 +38,11 @@ class Signup(View):
         if not error_message:
             customer.password = make_password(customer.password)
             customer.register()
+
+            customer = Customer.get_customer_by_email(email)
+            request.session['customer'] = customer.id
+            request.session['name'] = customer.first_name
+
             return redirect('index')
         else:
             data = {
@@ -70,7 +75,7 @@ class Signup(View):
         elif not customer.password:
             error_message = 'Password field is empty!'
         elif len(customer.password) < 6:
-            error_message = 'Password must be 6 characters long!'
+            error_message = 'Password must be at least 6 characters long!'
         elif customer.is_exists():
             error_message = 'Email address already exists!'
 

@@ -26,4 +26,6 @@ class Checkout(View):
             order.save()
         request.session['cart'] = {}
 
+        request.session['customer'] = customer.id
+
         return redirect('orders')
