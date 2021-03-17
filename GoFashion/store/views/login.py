@@ -47,7 +47,8 @@ def logout(request):
 
 
 def profile(request):
-    return render(request, 'profile.html')
+    if request.method == 'GET':
+        return render(request, 'profile.html')
 
 
 def edit_profile(request, id):

@@ -15,8 +15,8 @@ urlpatterns = [
     path('cart', cart.Cart.as_view(), name='cart'),
     path('checkout', Checkout.as_view(), name='checkout'),
     path('orders', auth_middleware(orders.OrderView.as_view()), name='orders'),
-    path('profile', profile, name='profile'),
     path('search', home.search, name='search'),
-    path('edit_profile/<int:id>', edit_profile, name='edit_profile'),
+    path('profile', auth_middleware(profile), name='profile'),
+    path('edit_profile/<int:id>', auth_middleware(edit_profile), name='edit_profile'),
     path('password_reset', password_reset.password_reset, name='password_reset'),
 ]
