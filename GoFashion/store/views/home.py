@@ -22,7 +22,7 @@ class Index(View):
         # print('You are:', request.session.get('email'))
 
         # pagination
-        paginator = Paginator(products, 1)
+        paginator = Paginator(products, 3)
         page = request.GET.get('page')
         try:
             products = paginator.page(page)

@@ -50,5 +50,27 @@ def profile(request):
     return render(request, 'profile.html')
 
 
-def edit_profile(request):
-    return render(request, 'edit_profile.html')
+def edit_profile(request, id):
+    customer = Customer.objects.get(id=id)
+
+    if request.method == 'GET':
+        data = {
+            'customer': customer
+        }
+        return render(request, 'edit_profile.html', data)
+    else:
+        customer.first_name = request.POST['first_name']
+        customer.last_name = request.POST['last_name']
+        customer.phone = request.POST['phone']
+        customer.email = request.POST['email']
+        customer.save()
+
+        request.session.clear()
+
+        request.session['customer'] = customer.id
+        request.session['first_name'] = customer.first_name
+        request.session['last_name'] = customer.last_name
+        request.session['phone'] = customer.phone
+        request.session['email'] = customer.email
+
+        return redirect('profile')

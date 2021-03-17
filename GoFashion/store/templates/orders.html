@@ -3,7 +3,7 @@
 {% block content %}
 {% load cart %}
 {% load custom_filter_for_currency %}
-<title>GoFashion-Order</title>
+<title>GoFashion | Order</title>
 
     <div class="container">
         <div class="border rounded p-4 m-4">
@@ -45,4 +45,6 @@
             </table>
         </div>
     </div>
+    <hr>
+    {% include 'pagination.html' with page=orders %}      
 {% endblock %}

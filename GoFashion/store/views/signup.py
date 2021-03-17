@@ -43,7 +43,7 @@ class Signup(View):
             request.session['customer'] = customer.id
             request.session['name'] = customer.first_name
 
-            return redirect('index')
+            return redirect('login')
         else:
             data = {
                 'error': error_message,
@@ -80,3 +80,4 @@ class Signup(View):
             error_message = 'Email address already exists!'
 
         return error_message
+

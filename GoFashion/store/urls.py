@@ -3,7 +3,7 @@ from django.contrib.auth import views as auth_views
 from django.urls import path
 
 from store.middlewares.auth import auth_middleware
-from .views import home, signup, login, cart, orders
+from .views import home, signup, login, cart, orders, password_reset
 from .views.checkout import Checkout
 from .views.login import logout, profile, edit_profile
 
@@ -17,5 +17,6 @@ urlpatterns = [
     path('orders', auth_middleware(orders.OrderView.as_view()), name='orders'),
     path('profile', profile, name='profile'),
     path('search', home.search, name='search'),
-    path('edit-profile', edit_profile, name='edit_profile'),
+    path('edit_profile/<int:id>', edit_profile, name='edit_profile'),
+    path('password_reset', password_reset.password_reset, name='password_reset'),
 ]
