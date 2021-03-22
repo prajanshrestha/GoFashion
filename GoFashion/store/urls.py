@@ -19,4 +19,5 @@ urlpatterns = [
     path('profile', auth_middleware(profile), name='profile'),
     path('edit_profile/<int:id>', auth_middleware(edit_profile), name='edit_profile'),
     path('password_reset', password_reset.password_reset, name='password_reset'),
+    path('reset_message', password_reset.reset_message, name='reset_message'),
 ]

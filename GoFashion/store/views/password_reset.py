@@ -2,7 +2,7 @@ import random
 import string
 
 from django.contrib.auth.hashers import make_password
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 
 from store.models.customer import Customer
 
@@ -16,6 +16,9 @@ def password_reset(request):
         letters += string.ascii_uppercase
         result_str = ''.join(random.choice(letters) for i in range(10))
         print(result_str)
+        data = {
+            'result_str': result_str
+        }
 
         # verify
         customer = Customer.objects.get(email=email)
@@ -25,6 +28,10 @@ def password_reset(request):
 
         customer.password = make_password(result_str)
         customer.save()
-        return redirect('login')
+        return render(request, 'reset_message.html', data)
     else:
         return render(request, 'password_reset.html')
+
+
+def reset_message(request):
+    return render(request, 'reset_message.html')
