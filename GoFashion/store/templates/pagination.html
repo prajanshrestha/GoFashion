@@ -1,24 +1,48 @@
-<div>
+{% if is_paginated %}
+    <div>
+        <ul class="pagination justify-content-center">
+            <li class="page-item">
+                {% if page_obj.has_previous %}
+                    <a href="?search={{query_value}}&page={{ page_obj.previous_page_number }}">&laquo;</a>
+                {% endif %}
+            </li>
+
+            <span>
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+            </span>
+        
+            <span>
+                {% if page_obj.has_next %}
+                    <a href="?search={{query_value}}&page={{ page_obj.next_page_number }}">&raquo;</a>
+                {% endif %}
+            </span>
+        </ul>
+    </div>
+{% endif %}
+
+
+<!-- {% if page.has_other_pages %}
+  <div>
     <ul class="pagination justify-content-center">
+      {% if page.has_previous %}
         <li class="page-item">
-            {% if page.has_previous %}
-                <a href="?page={{ page.previous_page_number }}">&laquo;</a>
-            {% endif %}
+          <a href="?page={{ page.previous_page_number }}">&laquo;</a>
         </li>
-    
-        <span>
-            Page {{ page.number }} of {{ page.paginator.num_pages }}
-        </span>
-    
-        <span>
-            {% if page.has_next %}
-                <a href="?page={{ page.next_page_number }}">&raquo;</a>
-            {% endif %}
-        </span>
+      {% else %}
+        <li class="disabled"><span>&laquo;</span></li>
+      {% endif %}
+      {% for i in page.paginator.page_range %}
+        {% if page.number == i %}
+          <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+        {% else %}
+          <li><a href="?page={{ i }}">{{ i }}</a></li>
+        {% endif %}
+      {% endfor %}
+      {% if page.has_next %}
+        <li><a href="?page={{ page.next_page_number }}">&raquo;</a></li>
+      {% else %}
+        <li class="disabled"><span>&raquo;</span></li>
+      {% endif %}
     </ul>
-</div>
-
-
-
-
-
+  </div>
+{% endif %} -->

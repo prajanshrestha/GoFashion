@@ -1,6 +1,8 @@
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.db.models import Q
 from django.shortcuts import render, redirect
 from django.views import View
+from django.views.generic import ListView
 
 from store.models.category import Category
 from store.models.product import Product
@@ -43,6 +45,8 @@ class Index(View):
         product = request.POST.get('product')
         remove = request.POST.get('remove')
         cart = request.session.get('cart')
+        url = request.POST.get('url')
+        print(url)
         if cart:
             quantity = cart.get(product)
             if quantity:
@@ -59,15 +63,29 @@ class Index(View):
             cart = {}
             cart[product] = 1
         request.session['cart'] = cart
-
+        if url is not None:
+            return redirect(url)
         return redirect('index')
 
 
-def search(request):
-    search_product = request.GET['search']
-    products = Product.objects.filter(name__icontains=search_product)
-    data = {
-        'products': products
-    }
+class Search(ListView):
+    model = Product
+    template_name = 'search.html'
+    context_object_name = "products"
+    paginate_by = 1
 
-    return render(request, 'search.html', data)
+    def get_queryset(self):
+        request = self.request
+        query = request.GET.get('search', None)
+
+        if query is not None:
+            lookup = Q(name__icontains=query) | Q(description__icontains=query)
+            return Product.objects.filter(lookup).distinct()
+        return Product.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super(Search, self).get_context_data(**kwargs)
+        request = self.request
+        query = request.GET.get('search', None)
+        context['query_value'] = query
+        return context
