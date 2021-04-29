@@ -12,12 +12,12 @@
       <!-- all products -->
       <div id="products" class="col-lg-9 mx-auto">
         <div class="row mx-auto">
-        
             <div class="card mx-auto mb-3" id="{{ product.id }}" style="width: 18rem;">
               <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
               <div class="card-body">
                 <p class="card-title">{{ product.name }}</p>
-                <p class="card-text"><b>{{ product.price|currency }}</b></p>
+                <p class="card-text"><b>{{ product.price|currency }}, Stars:{{ product.get_rating|floatformat:1 }}</b></p>
+                
                 <!-- {{ product | is_in_cart:request.session.cart }} -->
               </div>
                <!-- for add to cart -->
@@ -52,8 +52,69 @@
                   {% endif %} 
                </div>
             </div>
-          
         </div>  
+
+
+        <!-- product rating and review -->
+        <hr>
+        <h2 class="subtitle">Reviews</h2>
+        <div class="reviews-wrapper">
+          {% for review in product.reviews.all %}
+            <div class="notification">
+              <p>
+                <strong>Date: </strong>{{ review.date_added | date:"Y-m-d" }},
+                <strong>Stars: </strong>{{ review.stars }}
+                <strong>Content: </strong>{{ review.content }}
+              </p>
+            </div>
+            
+          {% empty %}
+            <div class="notification">
+              No reviews yet...
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="notification">
+          {% if request.session.customer %}
+            <form method="POST" action="/product_review_rating/{{ product.id }}">
+              {% csrf_token %}
+              <div class="field">
+                <label>Stars</label>
+
+                <div class="control">
+                  <div class="select">
+                    <select name="stars">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field">
+                <label">Content</label>
+
+                <div class="control">
+                  <textarea name="content" class="textarea"></textarea>
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="control">
+                  <button class="btn btn-outline-info my-2 my-sm-0">Submit</button>
+                </div>
+              </div>
+            </form>
+          {% else %}
+            <p>Please <a href="/signup">register</a> or <a href="/login">login</a> to add review.</p>
+          {% endif %}
+        </div>
+
+
       </div>
     </div>
   </div>

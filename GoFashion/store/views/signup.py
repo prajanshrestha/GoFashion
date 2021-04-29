@@ -80,4 +80,3 @@ class Signup(View):
             error_message = 'Email address already exists!'
 
         return error_message
-

@@ -10,6 +10,15 @@ class Product(models.Model):
     description = models.CharField(max_length=100, default='')
     image = models.ImageField(upload_to='uploads/products/')
 
+    def get_rating(self):
+        total = sum(int(review['stars']) for review in self.reviews.values())
+
+        if self.reviews.count() > 0:
+            return total / self.reviews.count()
+        else:
+            return 0
+
+
     @staticmethod
     def get_all_products():
         return Product.objects.all()
