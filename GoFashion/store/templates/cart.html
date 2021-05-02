@@ -44,13 +44,14 @@
 
             <!-- ckeckout button -->
             <div class="m-3 p-3">
-                <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-info border rounded col-lg-4 float-right">Check out</a>
+                <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-info border rounded col-lg-4 float-right">Proceed to Check-out</a>
             </div>
         </div>
     </div>
 
     <!-- modal -->
     {% if request.session.customer %}
+    {% for product in products %}
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -76,14 +77,15 @@
                                 </div>    
 
                                 <!-- checkout button -->
-                                <input type="submit" class="btn btn-outline-info border rounded col-lg-7 float-right" value="Check out">    
+                                <input type="submit" class="btn btn-outline-info border rounded col-lg-7 float-right" value="Check out">
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    
+    {% endfor %}
+
     {% else %}
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">

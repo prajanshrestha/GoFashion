@@ -1,7 +1,7 @@
 from django.urls import path
 
 from store.middlewares.auth import auth_middleware
-from .views import home, signup, login, cart, orders, product_description, product_review_rating
+from .views import home, signup, login, cart, orders, product_description, product_review_rating, online_payment
 from .views.checkout import Checkout
 from .views.login import logout, profile, edit_profile
 
@@ -18,4 +18,6 @@ urlpatterns = [
     path('edit_profile/<int:id>', auth_middleware(edit_profile), name='edit_profile'),
     path('product_description/<int:ids>', product_description.ProductDescription.as_view(), name='product_description'),
     path('product_review_rating/<int:ids>', product_review_rating.product_review_rating, name='product_review_rating'),
+    # path('online_payment/<int:pk>/', online_payment.online_payment, name='online_payment'),
+    # path('payment_complete', online_payment.payment_complete, name='payment_complete'),
 ]
