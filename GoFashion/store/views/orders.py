@@ -11,7 +11,7 @@ class OrderView(View):
         orders = Order.get_orders_by_customer(customer)
 
         # pagination
-        paginator = Paginator(orders, 3)
+        paginator = Paginator(orders, 5)
         page = request.GET.get('page')
         try:
             orders = paginator.page(page)

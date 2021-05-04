@@ -24,7 +24,7 @@ class Index(View):
         # print('You are:', request.session.get('email'))
 
         # pagination
-        paginator = Paginator(products, 3)
+        paginator = Paginator(products, 12)
         page = request.GET.get('page')
         try:
             products = paginator.page(page)
@@ -72,14 +72,14 @@ class Search(ListView):
     model = Product
     template_name = 'search.html'
     context_object_name = "products"
-    paginate_by = 1
+    paginate_by = 6
 
     def get_queryset(self):
         request = self.request
         query = request.GET.get('search', None)
 
         if query is not None:
-            lookup = Q(name__icontains=query) | Q(description__icontains=query)
+            lookup = Q(name__icontains=query) | Q(description__icontains=query) | Q(price__icontains=query)
             return Product.objects.filter(lookup).distinct()
         return Product.objects.all()
 

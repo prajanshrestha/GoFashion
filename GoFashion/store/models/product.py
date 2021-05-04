@@ -7,7 +7,7 @@ class Product(models.Model):
     name = models.CharField(max_length=50)
     price = models.IntegerField(default=0)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
-    description = models.TextField(max_length=100, default='')
+    description = models.TextField(max_length=10000, default='')
     image = models.ImageField(upload_to='uploads/products/')
 
     def get_rating(self):

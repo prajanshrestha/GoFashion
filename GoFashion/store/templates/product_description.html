@@ -17,9 +17,10 @@
               <div class="card-body">
                 <p class="card-title">{{ product.name }}</p>
                 <p class="card-text"><b>{{ product.price|currency }}, Stars:{{ product.get_rating|floatformat:1 }}</b></p>
-                
+                <p class="card-text"><b>{{ product.description }}</b></p>
                 <!-- {{ product | is_in_cart:request.session.cart }} -->
               </div>
+              
                <!-- for add to cart -->
                <div class="card-footer p-0 no-gutters">
                   {% if product|is_in_cart:request.session.cart %}
