@@ -5,43 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21f1d10d-0504-4ca9-b2bb-6641e02eb760" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/uploads/products/Black_Track.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/Black_Winter_Jacket.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/Blue-Purple_Womes_Jacket.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/Boxy_Quilted_Jacket.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/Brown_Leather_Jacket.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/Brown_Leather_Shoes.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/Capsule_Pant.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/Concealed_Placket_Silk_Shirt.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/Dress_Shirt-Women.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/Fila_Shoes.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/Flip_Flop_Shoe.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/Havaianas_Baby_Classics.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/Hellyhansen_Womens_Svalbard_Jacket.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/Home_v4_-_Extempore.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/Kids_Gold_Boots.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/Lace_Up_Pant.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/Linen_Shirt_Men.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/Long_Sleeve_Plain_White_Shirt.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/Mantyhose_Corap.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/Mens_Henly_Short_Sleeve.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/Mens_Hooded_Leather_Jacket.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/Mens_Kilim_Loafers.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/Merino_Wool_Jacket.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/Obermeyer_Enforcer_Pant.jfif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/Pacific_Epsom_Mens_Shirt.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/Palmeri_Flat_Shoe.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/Puffer_Mens_Jacket.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/Slim_Fit_Dress_Pant.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/Victory-Youth_Athlectic_Jacket.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/products/Womens_Plain_Black_Pant.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/products/Backless_Indigo_Dress.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/products/Charcoal_Formal_-_Men.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/products/Children_Kurta.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/products/Children_T-Shirt.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/products/Chole_Georgette_Shirt_Dress.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/products/Formal_Jacket.jfif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/products/Kids_Black_T-Shirt.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/products/LB_Floral_Dress.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/products/Marvel_T-Shirt.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/products/PSSA_T-Shirt.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/products/Red_Suit.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/products/Semi_Formal_Outfit_-_Children.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/products/Winter_Fashion.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GoFashion/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/GoFashion/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GoFashion/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/GoFashion/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/models/product.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/models/product.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/templates/product_description.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/product_description.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/views/home.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/views/home.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/views/orders.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/views/orders.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/templates/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/products/plain_black_t_shirt_for_kids-r49455160aaf74c9480a7c8b521ffb21c_65ytt_70_21c6WnS.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,13 +63,16 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../django-paypal-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../GoFashion-main" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Dikshya\Desktop\Prajan\FYP\GoFashion\GoFashion\store\templates" />
       <recent name="C:\Users\Dikshya\Desktop\Prajan\FYP\GoFashion\GoFashion\store\views" />
       <recent name="C:\Users\Dikshya\Desktop\Prajan\FYP\GoFashion\GoFashion\store\models" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Dikshya\Desktop\Prajan\FYP\GoFashion\GoFashion\store" />
     </key>
   </component>
   <component name="RunManager">
