@@ -1,19 +1,38 @@
 <div>
     <ul class="pagination justify-content-center">
-        <li class="page-item">
-            {% if page.has_previous %}
-                <a href="?page={{ page.previous_page_number }}">&laquo;</a>
-            {% endif %}
-        </li>
+        {% if categoryID %}
+            <li class="page-item">
+                {% if page.has_previous %}
+                    <a href="?page={{ page.previous_page_number }}&category={{ categoryID }}">&laquo;</a>
+                {% endif %}
+            </li>
 
-        <span>
-            Page {{ page.number }} of {{ page.paginator.num_pages }}
-        </span>
-    
-        <span>
-            {% if page.has_next %}
-                <a href="?page={{ page.next_page_number }}">&raquo;</a>
-            {% endif %}
-        </span>
+            <span>
+                Page {{ page.number }} of {{ page.paginator.num_pages }}
+            </span>
+        
+            <span>
+                {% if page.has_next %}
+                    <a href="?page={{ page.next_page_number }}&category={{ categoryID }}">&raquo;</a>
+                {% endif %}
+            </span>
+        {% else %}
+            <li class="page-item">
+                {% if page.has_previous %}
+                    <a href="?page={{ page.previous_page_number }}">&laquo;</a>
+                {% endif %}
+            </li>
+
+            <span>
+                Page {{ page.number }} of {{ page.paginator.num_pages }}
+            </span>
+        
+            <span>
+                {% if page.has_next %}
+                    <a href="?page={{ page.next_page_number }}">&raquo;</a>
+                {% endif %}
+            </span>
+        {% endif %}
     </ul>
 </div>
+

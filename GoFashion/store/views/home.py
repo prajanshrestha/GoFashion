@@ -36,7 +36,8 @@ class Index(View):
         data = {
             'products': products,
             'categories': categories,
-            'page': page
+            'page': page,
+            'categoryID': categoryID
         }
 
         return render(request, 'index.html', data)
