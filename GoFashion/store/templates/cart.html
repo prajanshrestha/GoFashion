@@ -1,111 +1,121 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 {% load cart %}
 {% load custom_filter_for_currency %}
-<title>GoFashion | Cart</title>
 
-    <div class="container">
-        <div class="border rounded p-4 m-4">
-            <p class="display-4 pl-2 ml-2">Your Cart</p>
-            <hr>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Sno.</th>
-                        <th>Image</th>
-                        <th>Product</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for product in products %}
-                    <tr>
-                        <td>{{ forloop.counter }}</td>
-                        <td><img style="height:80px" class="rounded-circle" src="{{ product.image.url }}" alt=""></td>
-                        <td>{{ product.name }}</td>
-                        <td>{{ product.price|currency }}</td>
-                        <td>{{ product|product_quantity_in_cart:request.session.cart }}</td>
-                        <td>{{ product|price_total:request.session.cart|currency }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th colspan="4"></th>
-                        <th class="" colspan="">Grand Total</th>
-                        <th>{{ products|total_cart_price:request.session.cart|currency }}</th>
-                    </tr>
-                </tfoot>
-            </table>
-            <hr>
-
-            <!-- ckeckout button -->
-            <div class="m-3 p-3">
-                <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-info border rounded col-lg-4 float-right">Proceed to Check-out</a>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{% static '/css/style.css/' %}">
+        <title>GoFashion | Cart</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="border rounded p-4 m-4">
+                <p class="display-4 pl-2 ml-2">Your Cart</p>
+                <hr>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Sno.</th>
+                            <th>Image</th>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in products %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td><img style="height:80px" class="rounded-circle" src="{{ product.image.url }}" alt=""></td>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.price|currency }}</td>
+                            <td>{{ product|product_quantity_in_cart:request.session.cart }}</td>
+                            <td>{{ product|price_total:request.session.cart|currency }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="4"></th>
+                            <th class="" colspan="">Grand Total</th>
+                            <th>{{ products|total_cart_price:request.session.cart|currency }}</th>
+                        </tr>
+                    </tfoot>
+                </table>
+                <hr>
+    
+                <!-- ckeckout button -->
+                <div class="m-3 p-3">
+                    <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-info border rounded col-lg-4 float-right">Proceed to Check-out</a>
+                </div>
             </div>
         </div>
-    </div>
+   
+    
 
-    <!-- modal -->
-    {% if request.session.customer %}
-    {% for product in products %}
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Checkout Form</h5>
-                    <hr>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="m-2 p-2">
-                            <form action="/checkout" method="POST">
-                                {% csrf_token %}
-                                <div class="form-group">
-                                    <label for="">Address*</label>
-                                    <input type="text" name="address" id="" class="form-control" placeholder="" aria-describedby="helpId" required>
-                                </div>
+        <!-- modal -->
+        {% if request.session.customer %}
+        {% for product in products %}
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Checkout Form</h5>
+                        <hr>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="m-2 p-2">
+                                <form action="/checkout" method="POST">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="">Address*</label>
+                                        <input type="text" name="address" id="" class="form-control" placeholder="" aria-describedby="helpId" required>
+                                    </div>
 
-                                <div class="form-group">
-                                    <label for="">Phone*</label>
-                                    <input type="text" name="phone" id="" class="form-control" placeholder="" aria-describedby="helpId" required>
-                                </div>    
+                                    <div class="form-group">
+                                        <label for="">Phone*</label>
+                                        <input type="text" name="phone" id="" class="form-control" placeholder="" aria-describedby="helpId" required>
+                                    </div>    
 
-                                <!-- checkout button -->
-                                <input type="submit" class="btn btn-outline-info border rounded col-lg-7 float-right" value="Check out">
-                            </form>
+                                    <!-- checkout button -->
+                                    <input type="submit" class="btn btn-outline-info border rounded col-lg-7 float-right" value="Check out">
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
 
-    {% else %}
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Login or SignUp</h5>
-                    <hr>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="m-2 p-2">
-                            <p>In order to checkout, please <a href="/login">Login</a> or <a href="/signup">Create an Account</a> if you have not created yet.</p>
+        {% else %}
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Login or SignUp</h5>
+                        <hr>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                         </div>
-                        
+                        <div class="modal-body">
+                            <div class="m-2 p-2">
+                                <p>In order to checkout, please <a href="/login">Login</a> or <a href="/signup">Create an Account</a> if you have not created yet.</p>
+                            </div>
+                            
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    {% endif %}
-
+        {% endif %}
+    </body>
+</html>
 {% endblock %}
