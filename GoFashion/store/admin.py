@@ -8,7 +8,7 @@ from .models.product_review_rating import ProductReviewRating
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['name', 'id', 'price', 'category']
+    list_display = ['id', 'name', 'price', 'category']
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -16,11 +16,11 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class CustomerAdmin(admin.ModelAdmin):
-    list_display = ['first_name', 'last_name', 'phone', 'email']
+    list_display = ['id', 'first_name', 'last_name', 'phone', 'email']
 
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['product', 'customer', 'quantity', 'price', 'address', 'phone', 'date', 'order_completed']
+    list_display = ['id', 'product', 'customer', 'quantity', 'price', 'address', 'phone', 'date', 'order_completed']
 
 
 class ProductReviewRatingAdmin(admin.ModelAdmin):

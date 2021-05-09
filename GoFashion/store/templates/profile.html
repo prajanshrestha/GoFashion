@@ -1,30 +1,44 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{% static '/css/profile.css/' %}">
+        <title>GoFashion | Profile</title>
+    </head>
+    <body>
+        <div class="d-flex justify-content-center align-items-center login-container">
+            <form class="login-form">
+                <h1 class="mb-5 font-weight-light text-uppercase text-center">Your Profile</h1>
 
-<title>GoFashion | Profile</title>
-    <div class="container">
-        <div class="border rounded p-4 m-4">
-            <p class="display-4 pl-2 ml-2">Your Profile</p>
-            <hr>
-            <hr>
-            {{ request.session.first_name }}
-            <br>
-            {{ request.session.last_name }}
-            <br>
-            {{ request.session.phone }}
-            <br>
-            {{ request.session.email }}
-            <br>
-            <hr>
+                <!-- <div class="form-group">
+                    <label for="">First Name</label> <input type="password" name="password" id="" class="form-control rounded-pill form-control-lg" placeholder="Password" >
+                </div> -->
 
-            <!-- ckeckout button -->
-            <div class="m-3 p-3">
-                <a href="/edit_profile/{{ request.session.customer }}" class="btn btn-outline-info border rounded col-lg-4 float-left">Edit Profile</a>
-            </div>
+
+
+                <hr>
+                {{ request.session.first_name }}
+                <br>
+                {{ request.session.last_name }}
+                <br>
+                {{ request.session.phone }}
+                <br>
+                {{ request.session.email }}
+                <br>
+                <hr>
+
+                <!-- button -->
+                    <a id="12" href="/edit_profile/{{ request.session.customer }}" class="btn mt-5 rounded-pill btn-lg btn-custom btn-block text-uppercase">Edit Profile</a>
+              
+            </form>
         </div>
-    </div>
-
+    </body>
+</html>
 {% endblock %}
 
 
