@@ -5,19 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21f1d10d-0504-4ca9-b2bb-6641e02eb760" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/pagination.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/store/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/templates/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/cart.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/templates/edit_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/edit_profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/templates/orders.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/orders.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/templates/pagination.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/pagination.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/templates/pagination2.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/pagination2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/templates/product_description.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/product_description.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/templates/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/store/templates/login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

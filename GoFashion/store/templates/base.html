@@ -4,16 +4,18 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    
   </head>
   <body>
     <!-- navbar -->
     <!-- navbar-light bg-light -->
     <nav class="navbar navbar-expand-lg">    
-      <a class="navbar-brand" href="http://127.0.0.1:8000/">GOFASHION</a>
+      <a class="navbar-brand" href="http://127.0.0.1:8000/" style="color: black;">GOFASHION</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -23,48 +25,54 @@
 
           {% if request.session.customer %}
           <li class="nav-item">
-            <a class="nav-link">Hello, <b>{{ request.session.first_name }}</b><span class="sr-only">(current)</span></a>
+            <a class="nav-link" style="color: black;">Hello, <b>{{ request.session.first_name }}</b><span class="sr-only">(current)</span></a>
           </li>
           {% endif %}
 
           <li class="nav-item">
-            <a class="nav-link" href="http://127.0.0.1:8000/">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="http://127.0.0.1:8000/" style="color: black;">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/cart">Cart 
-              <span class="badge badge-info">{{ request.session.cart.keys|length }}</span>
-              <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/cart" style="color: black;">
+              <i class="fas fa-cart-plus"></i>
+              <span class="badge" style="background-color: #723dbe; color: white;">{{ request.session.cart.keys|length }}</span>
+              <span class="sr-only">(current)</span>
+            </a>
           </li>
 
           {% if request.session.customer %}
           <!-- dropdown -->
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: black;">
               Profile
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/profile">Manage My Profile</a>
-              <a class="dropdown-item" href="/orders">My Orders</a>
+              <a class="dropdown-item" href="/profile" style="color: black;">Manage My Profile</a>
+              <a class="dropdown-item" href="/orders" style="color: black;">My Orders</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="/logout">Logout</a>
+              <a class="dropdown-item" href="/logout" style="color: black;">Logout</a>
               <!-- <a class="dropdown-item" href="#">Something else here</a> -->
             </div>
           </li>
 
           {% else %}
           <li class="nav-item">
-            <a class="nav-link" href="/signup">Signup <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/signup" style="color: black;">Signup <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/login">Login<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/login" style="color: black;">Login<span class="sr-only">(current)</span></a>
           </li>
           {% endif %}
         </ul>
  
         <!-- right side -->
-        <form method="get" action="/search" class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2 rounded-pill" type="search" placeholder="Search..." aria-label="Search" name="search" id="search">
-          <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+        <form method="get" action="/search" class="form-inline my-2 my-lg-0" style="width: 495px;">
+          <input class="form-control mr-sm-2 rounded-pill" type="search" placeholder="Search..." aria-label="Search" name="search" id="search" style="width:512px; height: 48px;">
+          <button class="search-button" style="transform: translateX(-50px); border: none; background-color: transparent; margin-top: -47px; margin-left: 496px;">
+            <i class="fas fa-search search-icon"></i>
+          </button>
+           
+        </form>  
         </form>
       </div>
     </nav>
