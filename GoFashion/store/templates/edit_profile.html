@@ -1,43 +1,54 @@
 {% extends 'base.html' %}
+
+{% load static %}
+
 {% block content %}
-
-<title>GoFashion | EditProfile</title>
-    <div class="container">
-        <div class="p-4 m-4">
-            <div class="col-lg-5 mt-4 mb-4 mx-auto border rounded pt-4 pr-4 pl-4 pb-4">
-                <h3 class="alert alert-light border mt-4 mb-4 rounded">Update Details</h3>
-                <form action="/edit_profile/{{customer.id}}" method="POST">
-                    {% csrf_token %}
-
-                    <!--firstname-->
-                    <div class="form-group">
-                        <label for="">First Name</label>
-                        <input type="text" name="first_name" id="" value="{{customer.first_name}}" class="form-control form-control-sm" placeholder="" aria-describedby="helpId" required>
-                    </div>
-                    <!--lastname-->
-                    <div class="form-group">
-                        <label for="">Last Name</label>
-                        <input type="text" name="last_name" id="" value="{{customer.last_name}}" class="form-control form-control-sm" placeholder="" aria-describedby="helpId" required>
-                    </div>
-
-                    <!--PhoneNumber-->
-                    <div class="form-group">
-                        <label for="">Phone Number</label>
-                        <input type="text" name="phone" id="" value="{{customer.phone}}"class="form-control form-control-sm" placeholder="" aria-describedby="helpId" required>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{% static '/css/style.css/' %}">
+        <title>GoFashion | EditProfile</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="p-4 m-4">
+                <div class="col-lg-5 mt-4 mb-4 mx-auto border rounded pt-4 pr-4 pl-4 pb-4">
+                    <h3 class="alert alert-light border mt-4 mb-4 rounded">Update Details</h3>
+                    <form action="/edit_profile/{{customer.id}}" method="POST">
+                        {% csrf_token %}
+    
+                        <!--firstname-->
+                        <div class="form-group">
+                            <label for="">First Name</label>
+                            <input type="text" name="first_name" id="" value="{{customer.first_name}}" class="form-control form-control-sm" placeholder="" aria-describedby="helpId" required>
                         </div>
-                    <!--Email-->
-                    <div class="form-group">
-                    <label for="">Email</label>
-                    <input required type="email" name="email" id="" value="{{customer.email}}"class="form-control form-control-sm" placeholder="" aria-describedby="helpId" required>
-                    </div>
-                    
-                    <hr>
-                    <!-- button -->
-                    <div class="form-group mx-auto">
-                        <input class="btn btn-outline-info border rounded col-lg-7" type="submit" value="Update">
-                    </div>
-                </form>
+                        <!--lastname-->
+                        <div class="form-group">
+                            <label for="">Last Name</label>
+                            <input type="text" name="last_name" id="" value="{{customer.last_name}}" class="form-control form-control-sm" placeholder="" aria-describedby="helpId" required>
+                        </div>
+    
+                        <!--PhoneNumber-->
+                        <div class="form-group">
+                            <label for="">Phone Number</label>
+                            <input type="text" name="phone" id="" value="{{customer.phone}}"class="form-control form-control-sm" placeholder="" aria-describedby="helpId" required>
+                            </div>
+                        <!--Email-->
+                        <div class="form-group">
+                        <label for="">Email</label>
+                        <input required type="email" name="email" id="" value="{{customer.email}}"class="form-control form-control-sm" placeholder="" aria-describedby="helpId" required>
+                        </div>
+                        
+                        <hr>
+                        <!-- button -->
+                        <div class="form-group mx-auto">
+                            <input class="btn btn-outline-info border rounded col-lg-7" type="submit" value="Update">
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
+    </body>
+</html>
 {% endblock %}

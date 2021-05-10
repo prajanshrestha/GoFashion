@@ -1,122 +1,130 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
 
- {% load cart %}
- {% load custom_filter_for_currency %}
-<title>GoFashion | ProductDescription</title>
+{% load cart %}
+{% load custom_filter_for_currency %}
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/style.css/' %}">
+    <title>GoFashion | ProductDescription</title>
+  </head>
+  <body>
+    <!-- card -->
+    <div class="container-fluid mt-3">
+      <div class="row">
+        <!-- all products -->
+        <div id="products" class="col-lg-9 mx-auto">
+          <div class="row mx-auto">
+              <div class="card mx-auto mb-3" id="{{ product.id }}" style="width: 18rem;">
+                <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
+                <div class="card-body">
+                  <p class="card-title">{{ product.name }}</p>
+                  <p class="card-text"><b>{{ product.price|currency }}, Stars:{{ product.get_rating|floatformat:1 }}</b></p>
+                  <p class="card-text"><b>{{ product.description }}</b></p>
+                  <!-- {{ product | is_in_cart:request.session.cart }} -->
+                </div>
+                
+                <!-- for add to cart -->
+                <div class="card-footer p-0 no-gutters">
+                    {% if product|is_in_cart:request.session.cart %}
+                      <div class="row no-gutters">
+                        <!-- removing product in cart -->
+                        <form action="/product_description/{{ product.id }}" class="col-2" method="post">
+                          {% csrf_token %}
+                          <input hidden type="text" name="product" value="{{ product.id }}">
+                          <input hidden type="text" name="remove" value="True">
+                          <input type="submit" value="-" class="btn btn-block btn-secondary">
+                        </form>
+      
+                        <div class="text-center col">
+                          {{ product|product_quantity_in_cart:request.session.cart }} in Cart
+                        </div>
+                        
+                        <!-- adding product in cart -->
+                        <form action="/product_description/{{ product.id }}" class="col-2" method="post">
+                          {% csrf_token %}
+                          <input hidden type="text" name="product" value="{{ product.id }}">
+                          <input type="submit" value="+" class="btn btn-block btn-secondary">
+                        </form>
+                      </div>
+                    {% else %}
+                    <form action="/product_description/{{ product.id }}" method="POST" class="btn-block">
+                        {% csrf_token %}
+                        <input hidden type="text" name="product" value="{{ product.id }}">
+                        <input type="submit" class="float-right btn btn-light border form-control" value="Add To Cart">
+                    </form>
+                    {% endif %} 
+                </div>
+              </div>
+          </div>  
 
-  <!-- card -->
-  <div class="container-fluid mt-3">
-    <div class="row">
-      <!-- all products -->
-      <div id="products" class="col-lg-9 mx-auto">
-        <div class="row mx-auto">
-            <div class="card mx-auto mb-3" id="{{ product.id }}" style="width: 18rem;">
-              <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
-              <div class="card-body">
-                <p class="card-title">{{ product.name }}</p>
-                <p class="card-text"><b>{{ product.price|currency }}, Stars:{{ product.get_rating|floatformat:1 }}</b></p>
-                <p class="card-text"><b>{{ product.description }}</b></p>
-                <!-- {{ product | is_in_cart:request.session.cart }} -->
+
+          <!-- product rating and review -->
+          <hr>
+          <h2 class="subtitle">Reviews</h2>
+          <div class="reviews-wrapper">
+            {% for review in product.reviews.all %}
+              <div class="notification">
+                <p>
+                  <strong>Date: </strong>{{ review.date_added | date:"Y-m-d" }},
+                  <strong>Stars: </strong>{{ review.stars }}
+                  <strong>Content: </strong>{{ review.content }}
+                </p>
               </div>
               
-               <!-- for add to cart -->
-               <div class="card-footer p-0 no-gutters">
-                  {% if product|is_in_cart:request.session.cart %}
-                    <div class="row no-gutters">
-                      <!-- removing product in cart -->
-                      <form action="/product_description/{{ product.id }}" class="col-2" method="post">
-                        {% csrf_token %}
-                        <input hidden type="text" name="product" value="{{ product.id }}">
-                        <input hidden type="text" name="remove" value="True">
-                        <input type="submit" value="-" class="btn btn-block btn-secondary">
-                      </form>
-    
-                      <div class="text-center col">
-                        {{ product|product_quantity_in_cart:request.session.cart }} in Cart
-                      </div>
-                      
-                      <!-- adding product in cart -->
-                      <form action="/product_description/{{ product.id }}" class="col-2" method="post">
-                        {% csrf_token %}
-                        <input hidden type="text" name="product" value="{{ product.id }}">
-                        <input type="submit" value="+" class="btn btn-block btn-secondary">
-                      </form>
+            {% empty %}
+              <div class="notification">
+                No reviews yet...
+              </div>
+            {% endfor %}
+          </div>
+
+          <div class="notification">
+            {% if request.session.customer %}
+              <form method="POST" action="/product_review_rating/{{ product.id }}">
+                {% csrf_token %}
+                <div class="field">
+                  <label>Stars</label>
+
+                  <div class="control">
+                    <div class="select">
+                      <select name="stars">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                      </select>
                     </div>
-                  {% else %}
-                  <form action="/product_description/{{ product.id }}" method="POST" class="btn-block">
-                      {% csrf_token %}
-                      <input hidden type="text" name="product" value="{{ product.id }}">
-                      <input type="submit" class="float-right btn btn-light border form-control" value="Add To Cart">
-                  </form>
-                  {% endif %} 
-               </div>
-            </div>
-        </div>  
-
-
-        <!-- product rating and review -->
-        <hr>
-        <h2 class="subtitle">Reviews</h2>
-        <div class="reviews-wrapper">
-          {% for review in product.reviews.all %}
-            <div class="notification">
-              <p>
-                <strong>Date: </strong>{{ review.date_added | date:"Y-m-d" }},
-                <strong>Stars: </strong>{{ review.stars }}
-                <strong>Content: </strong>{{ review.content }}
-              </p>
-            </div>
-            
-          {% empty %}
-            <div class="notification">
-              No reviews yet...
-            </div>
-          {% endfor %}
-        </div>
-
-        <div class="notification">
-          {% if request.session.customer %}
-            <form method="POST" action="/product_review_rating/{{ product.id }}">
-              {% csrf_token %}
-              <div class="field">
-                <label>Stars</label>
-
-                <div class="control">
-                  <div class="select">
-                    <select name="stars">
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                    </select>
                   </div>
                 </div>
-              </div>
 
-              <div class="field">
-                <label">Content</label>
+                <div class="field">
+                  <label">Content</label>
 
-                <div class="control">
-                  <textarea name="content" class="textarea"></textarea>
+                  <div class="control">
+                    <textarea name="content" class="textarea"></textarea>
+                  </div>
                 </div>
-              </div>
 
-              <div class="field">
-                <div class="control">
-                  <button class="btn btn-outline-info my-2 my-sm-0">Submit</button>
+                <div class="field">
+                  <div class="control">
+                    <button class="btn btn-outline-info my-2 my-sm-0">Submit</button>
+                  </div>
                 </div>
-              </div>
-            </form>
-          {% else %}
-            <p>Please <a href="/signup">register</a> or <a href="/login">login</a> to add review.</p>
-          {% endif %}
+              </form>
+            {% else %}
+              <p>Please <a href="/signup">register</a> or <a href="/login">login</a> to add review.</p>
+            {% endif %}
+          </div>
         </div>
-
-
       </div>
     </div>
-  </div>
+  </body>
+</html>
 {% endblock %}

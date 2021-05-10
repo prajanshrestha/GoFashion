@@ -1,89 +1,99 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
 
- {% load cart %}
- {% load custom_filter_for_currency %}
-<title>GoFashion | SearchResult</title>
+{% load cart %}
+{% load custom_filter_for_currency %}
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{% static '/css/style.css/' %}">
+        <title>GoFashion | SearchResult</title>
+    </head>
+    <body>
+        {% if products %}
+        <!-- card -->
+        <div class="container-fluid mt-3">
+            <div class="row">
+                <div class="col-lg-3 mx-auto">
+                    <div class="list-group">
+                    <a href="" class="list-group-item list-group-item-action">Search Related Products</a>
+                    </div>
+                </div>
 
-  {% if products %}
-    <!-- card -->
-    <div class="container-fluid mt-3">
-        <div class="row">
-            <div class="col-lg-3 mx-auto">
-                <div class="list-group">
-                <a href="" class="list-group-item list-group-item-action">Search Related Products</a>
+                <!-- all products -->
+                <div id="products" class="col-lg-9 mx-auto">
+                    <div class="row mx-auto">
+
+                    {% for product in products %}
+                        <div class="card mx-auto mb-3" id="{{ product.id }}" style="width: 18rem;">
+                        <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-title">{{ product.name }}</p>
+                            <p class="card-text"><b>{{ product.price|currency }}</b></p>
+                            <!-- {{ product | is_in_cart:request.session.cart }} -->
+                        </div>
+
+                        <!-- for add to cart -->
+                        <div class="card-footer p-0 no-gutters">
+                            {% if product|is_in_cart:request.session.cart %}
+                                <div class="row no-gutters">
+                                <!-- removing product from cart -->
+                                <form action="/#{{ product.id }}" class="col-2" method="post">
+                                    {% csrf_token %}
+                                    <input hidden type="text" name="url" value="{{ request.build_absolute_uri }}">    
+                                    <input hidden type="text" name="product" value="{{ product.id }}">
+                                    <input hidden type="text" name="remove" value="True">
+                                    <input type="submit" value="-" class="btn btn-block btn-secondary">
+                                </form>
+                
+                                <div class="text-center col">
+                                    {{ product|product_quantity_in_cart:request.session.cart }} in Cart
+                                </div>
+                                
+                                <!-- adding product in cart -->
+                                <form action="/#{{ product.id }}" class="col-2" method="post">
+                                    {% csrf_token %}
+                                    <input hidden type="text" name="url" value="{{ request.build_absolute_uri }}">    
+                                    <input hidden type="text" name="product" value="{{ product.id }}">
+                                    <input type="submit" value="+" class="btn btn-block btn-secondary">
+                                </form>
+                                </div>
+                            {% else %}
+                            <form action="/#{{ product.id }}" method="POST" class="btn-block">
+                                {% csrf_token %}
+                                <input hidden type="text" name="url" value="{{ request.build_absolute_uri }}">    
+                                <input hidden type="text" name="product" value="{{ product.id }}">
+                                <input type="submit" class="float-right btn btn-light border form-control" value="Add To Cart">
+                            </form>
+                            {% endif %} 
+                            <a href="/product_description/{{ product.id }}" class="btn btn-block">
+                                <button class="float-right btn btn-light border form-control">View More</button> 
+                            </a> 
+                        </div>
+                        </div>
+                    {% endfor %}
+                    </div>  
                 </div>
             </div>
-
-            <!-- all products -->
-            <div id="products" class="col-lg-9 mx-auto">
-                <div class="row mx-auto">
-
-                {% for product in products %}
-                    <div class="card mx-auto mb-3" id="{{ product.id }}" style="width: 18rem;">
-                    <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-title">{{ product.name }}</p>
-                        <p class="card-text"><b>{{ product.price|currency }}</b></p>
-                        <!-- {{ product | is_in_cart:request.session.cart }} -->
-                    </div>
-
-                    <!-- for add to cart -->
-                    <div class="card-footer p-0 no-gutters">
-                        {% if product|is_in_cart:request.session.cart %}
-                            <div class="row no-gutters">
-                            <!-- removing product from cart -->
-                            <form action="/#{{ product.id }}" class="col-2" method="post">
-                                {% csrf_token %}
-                                <input hidden type="text" name="url" value="{{ request.build_absolute_uri }}">    
-                                <input hidden type="text" name="product" value="{{ product.id }}">
-                                <input hidden type="text" name="remove" value="True">
-                                <input type="submit" value="-" class="btn btn-block btn-secondary">
-                            </form>
-            
-                            <div class="text-center col">
-                                {{ product|product_quantity_in_cart:request.session.cart }} in Cart
-                            </div>
-                            
-                            <!-- adding product in cart -->
-                            <form action="/#{{ product.id }}" class="col-2" method="post">
-                                {% csrf_token %}
-                                <input hidden type="text" name="url" value="{{ request.build_absolute_uri }}">    
-                                <input hidden type="text" name="product" value="{{ product.id }}">
-                                <input type="submit" value="+" class="btn btn-block btn-secondary">
-                            </form>
-                            </div>
-                        {% else %}
-                        <form action="/#{{ product.id }}" method="POST" class="btn-block">
-                            {% csrf_token %}
-                            <input hidden type="text" name="url" value="{{ request.build_absolute_uri }}">    
-                            <input hidden type="text" name="product" value="{{ product.id }}">
-                            <input type="submit" class="float-right btn btn-light border form-control" value="Add To Cart">
-                        </form>
-                        {% endif %} 
-                        <a href="/product_description/{{ product.id }}" class="btn btn-block">
-                            <button class="float-right btn btn-light border form-control">View More</button> 
-                        </a> 
-                    </div>
-                    </div>
-                {% endfor %}
-                </div>  
-            </div>
         </div>
-    </div>
-    <hr>
-    {% include 'pagination.html' with page=products %}
-  {% else %}
-    <div class="border rounded p-4 m-4">
-        <p class="display-4 pl-2 ml-2">No Results Found!!</p>
-        <hr>
-        <hr>
-        <p style="text-align:center;">
-            It looks like there aren't many great matches for your search.
-            <br>
-            <b>Tip:</b> Try using words that might appear on the page you’re looking for. For example, "jacket" instead of "jackal"
-        </p>
-    </div>
-  {% endif %}
+        <br>
+        {% include 'pagination.html' with page=products %}
+        {% else %}
+            <div class="border rounded p-4 m-4">
+                <p class="display-4 pl-2 ml-2">No Results Found!!</p>
+                <hr>
+                <hr>
+                <p style="text-align:center;">
+                    It looks like there aren't many great matches for your search.
+                    <br>
+                    <b>Tip:</b> Try using words that might appear on the page you’re looking for. For example, "jacket" instead of "jackal"
+                </p>
+            </div>
+        {% endif %}
+    </body>
+</html>
 {% endblock %}
