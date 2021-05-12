@@ -71,7 +71,7 @@ def edit_profile(request, id):
         customer.email = request.POST['email']
         customer.city = request.POST['city']
         customer.street = request.POST['street']
-        customer.birthdate = request.POST['birthdate']
+        customer.age = request.POST['age']
         customer.gender = request.POST['gender']
 
         customer.save()
@@ -83,6 +83,10 @@ def edit_profile(request, id):
         request.session['last_name'] = customer.last_name
         request.session['phone'] = customer.phone
         request.session['email'] = customer.email
+        request.session['city'] = customer.city
+        request.session['street'] = customer.street
+        request.session['age'] = customer.age
+        request.session['gender'] = customer.gender 
 
         data = {
             'customer': customer
