@@ -92,9 +92,18 @@
                                                 <label for="gender">Gender</label>
                                                 <input  type="text" class="form-control" name="gender" value="{{customer.gender}}" placeholder="Gender">
                                             </div>
-                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                                <div class="text-right">
-                                                    <button type="submit" name="submit" class="btn  rounded-pill btn-lg- btn-custom text-uppercase">Save CHanges</button>
+                                            <div class="row gutters">
+                                                <div class="col-xl-7 col-lg-6 col-md-6 col-sm-6 col-6">
+                                                    <div class="text-right">
+                                                        <a href="/profile/{{customer.id}}">
+                                                        <button type="submit" name="submit" class="btn  rounded-pill btn-lg- btn-custom text-uppercase"> Cancel</button>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-5 col-lg-6 col-md-6 col-sm-6 col-6">
+                                                    <div class="text-right">
+                                                        <button type="submit" name="submit" class="btn  rounded-pill btn-lg- btn-custom text-uppercase">Save Changes</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
