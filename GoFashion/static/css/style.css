@@ -62,6 +62,8 @@ body{
 .btn-custom:focus{
   box-shadow: 0 0 0 0.2rem rgba(114,61,190,.25);
 }
+
+/* zoom */
 .product-image{
   overflow: hidden;
   position: relative;
@@ -71,6 +73,8 @@ body{
   overflow: hidden;    
   transition: .5s;
 }
+
+/* to make name bold in product description */
 .pname {
   font-weight: bold;
 }
