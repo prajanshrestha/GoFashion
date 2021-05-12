@@ -47,7 +47,7 @@
               Profile
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/profile" style="color: black;">Manage My Profile</a>
+              <a class="dropdown-item" href="/profile/{{ request.session.customer }}" style="color: black;">Manage My Profile</a>
               <a class="dropdown-item" href="/orders" style="color: black;">My Orders</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="/logout" style="color: black;">Logout</a>
@@ -76,11 +76,11 @@
         </form>
       </div>
     </nav>
-
-      
+    <!-- <br>
+    <br>
+    <hr> -->
     {% block content %}
     {% endblock %}
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

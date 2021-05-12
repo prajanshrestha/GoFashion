@@ -46,9 +46,14 @@ def logout(request):
     return redirect('login')
 
 
-def profile(request):
+def profile(request,id):
+    customer = Customer.objects.get(id=id)
     if request.method == 'GET':
-        return render(request, 'profile.html')
+        data = {
+            'customer': customer
+        }
+        return render(request, 'profile.html', data)
+
 
 
 def edit_profile(request, id):
@@ -64,6 +69,11 @@ def edit_profile(request, id):
         customer.last_name = request.POST['last_name']
         customer.phone = request.POST['phone']
         customer.email = request.POST['email']
+        customer.city = request.POST['city']
+        customer.street = request.POST['street']
+        customer.birthdate = request.POST['birthdate']
+        customer.gender = request.POST['gender']
+
         customer.save()
 
         request.session.clear()
@@ -74,4 +84,8 @@ def edit_profile(request, id):
         request.session['phone'] = customer.phone
         request.session['email'] = customer.email
 
-        return redirect('profile')
+        data = {
+            'customer': customer
+        }
+
+        return render(request, 'profile.html',data)

@@ -1,45 +1,109 @@
 {% extends 'base.html' %}
-
 {% load static %}
-
 {% block content %}
 <html>
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
             crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{% static '/css/profile.css/' %}">
         <link rel="stylesheet" type="text/css" href="{% static '/css/style.css/' %}">
         <title>GoFashion | Profile</title>
     </head>
+    <br>
+    <br>
     <body>
-        <div class="d-flex justify-content-center align-items-center login-container">
-            <form class="login-form">
-                <h1 class="mb-5 font-weight-light text-uppercase text-center">Your Profile</h1>
-
-                <!-- <div class="form-group">
-                    <label for="">First Name</label> <input type="password" name="password" id="" class="form-control rounded-pill form-control-lg" placeholder="Password" >
-                </div> -->
-
-
-
-                <hr>
-                {{ request.session.first_name }}
-                <br>
-                {{ request.session.last_name }}
-                <br>
-                {{ request.session.phone }}
-                <br>
-                {{ request.session.email }}
-                <br>
-                <hr>
-
-                <!-- button -->
-                    <a id="12" href="/edit_profile/{{ request.session.customer }}" class="btn mt-5 rounded-pill btn-lg btn-custom btn-block text-uppercase">Edit Profile</a>
-              
-            </form>
+        <div class="container">
+            <div class="row gutters">
+                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="account-settings">
+                                <div class="user-profile">
+                                    <div class="user-avatar">
+                                        <img src="{% static 'images/avatar.png' %}" alt="Maxwell Admin">
+                                    </div>
+                                    <h5 class="user-name">{{ request.session.first_name }} </h5>
+                                    <h6 class="user-email">{{ request.session.email }}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="row gutters">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <h6 class="mb-3 text-primary">Personal Details</h6>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="fullName">First Name</label>
+                                        <input readonly type="text" class="form-control" name="first_name" value="{{customer.first_name}}" placeholder="Enter full name">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="eMail">Last Name</label>
+                                        <input readonly type="email" class="form-control" name="last_name" value="{{customer.last_name}}" placeholder="Enter email ID">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="phone">Phone</label>
+                                        <input readonly type="text" class="form-control" name="phone" value="{{customer.phone}}" placeholder="Enter phone number">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="website">Email</label>
+                                        <input readonly type="url" class="form-control" name="email" value="{{customer.email}}" placeholder="Website url">
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="row gutters">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <h6 class="mb-3 text-primary">Others</h6>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="city">City</label>
+                                        <input readonly type="name" class="form-control" name="city" value="{{customer.city}}" placeholder="Enter City">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="street">Street</label>
+                                        <input readonly type="name" class="form-control" name="street" value="{{customer.street}}" placeholder="Enter Street">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="birthdate">Birthdate</label>
+                                        <input readonly type="text" class="form-control" name="birthdate" value="{{customer.birthdate}}" placeholder="Enter Birthdate">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="gender">Gender</label>
+                                        <input readonly type="text" class="form-control" name="gender" value="{{customer.gender}}" placeholder="Gender">
+                                    </div>
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <div class="text-right">
+                                            <a href="/edit_profile/{{ request.session.customer }}" >
+                                            <button type="button" name="submit" class="btn  rounded-pill btn-lg- btn-custom text-uppercase">Update Profile</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>
+
 {% endblock %}
-
-
-   

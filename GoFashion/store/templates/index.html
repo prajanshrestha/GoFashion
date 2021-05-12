@@ -30,9 +30,13 @@
           <div class="row mx-auto">
             {% for product in products %}
               <div class="card mx-auto mb-3" id="{{ product.id }}" style="width: 18rem;">
+                <a href="/product_description/{{ product.id }}" class="product-image">
                 <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
+                </a>
                 <div class="card-body">
+                  <a href="/product_description/{{ product.id }}" class="btn btn-block">
                   <p class="card-title">{{ product.name }}</p>
+                  </a>
                   <p class="card-text"><b>{{ product.price|currency }}</b></p>
                   <!-- {{ product | is_in_cart:request.session.cart }} -->
                 </div>
@@ -69,10 +73,7 @@
                         <input hidden type="text" name="url" value="{{ request.build_absolute_uri }}">
                         <input type="submit" class="float-right btn btn-light border form-control" value="Add To Cart">
                     </form>
-                    {% endif %} 
-                    <a href="/product_description/{{ product.id }}" class="btn btn-block">
-                      <button class="float-right btn btn-light border form-control">View More</button> 
-                    </a> 
+                    {% endif %}  
                 </div>
               </div>
             {% endfor %}

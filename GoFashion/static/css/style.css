@@ -1,4 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
+/* .navbar{
+  position:fixed;
+  width: 100% ;
+  z-index: 1;
+  background-color: #723dbe;
+} */
 body{
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
@@ -17,7 +23,7 @@ body{
   padding: 15px;
   max-width: 100%;
 }
-.form-control{
+.form-control {
   font-size: 15px;
   min-height: 48px;
   font-weight: 500;
@@ -33,7 +39,7 @@ body{
   font-size: 13px;
 }
 
-.form-control:focus{
+.form-control :focus{
   border-color:#723dbe;
   box-shadow: 0 0 0 0.2rem rgba(114,61,190,.25);
 }
@@ -55,4 +61,16 @@ body{
 }
 .btn-custom:focus{
   box-shadow: 0 0 0 0.2rem rgba(114,61,190,.25);
+}
+.product-image{
+  overflow: hidden;
+  position: relative;
+}
+.product-image .card-img-top:hover {
+  transform: scale(1.1);
+  overflow: hidden;    
+  transition: .5s;
+}
+.pname {
+  font-weight: bold;
 }

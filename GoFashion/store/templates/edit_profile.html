@@ -1,54 +1,112 @@
 {% extends 'base.html' %}
-
 {% load static %}
-
 {% block content %}
 <html>
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
             crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{% static '/css/profile.css/' %}">
         <link rel="stylesheet" type="text/css" href="{% static '/css/style.css/' %}">
-        <title>GoFashion | EditProfile</title>
+        <title>GoFashion | Profile</title>
     </head>
+    <br>
+    <br>
     <body>
         <div class="container">
-            <div class="p-4 m-4">
-                <div class="col-lg-5 mt-4 mb-4 mx-auto border rounded pt-4 pr-4 pl-4 pb-4">
-                    <h3 class="alert alert-light border mt-4 mb-4 rounded">Update Details</h3>
-                    <form action="/edit_profile/{{customer.id}}" method="POST">
-                        {% csrf_token %}
-    
-                        <!--firstname-->
-                        <div class="form-group">
-                            <label for="">First Name</label>
-                            <input type="text" name="first_name" id="" value="{{customer.first_name}}" class="form-control form-control-sm" placeholder="" aria-describedby="helpId" required>
-                        </div>
-                        <!--lastname-->
-                        <div class="form-group">
-                            <label for="">Last Name</label>
-                            <input type="text" name="last_name" id="" value="{{customer.last_name}}" class="form-control form-control-sm" placeholder="" aria-describedby="helpId" required>
-                        </div>
-    
-                        <!--PhoneNumber-->
-                        <div class="form-group">
-                            <label for="">Phone Number</label>
-                            <input type="text" name="phone" id="" value="{{customer.phone}}"class="form-control form-control-sm" placeholder="" aria-describedby="helpId" required>
+            <div class="row gutters">
+                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="account-settings">
+                                <div class="user-profile">
+                                    <div class="user-avatar">
+                                        <img src="{% static 'images/avatar.png' %}" alt="Maxwell Admin">
+                                    </div>
+                                    <h5 class="user-name">{{ request.session.first_name }} </h5>
+                                    <h6 class="user-email">{{ request.session.email }}</h6>
+                                </div>
                             </div>
-                        <!--Email-->
-                        <div class="form-group">
-                        <label for="">Email</label>
-                        <input required type="email" name="email" id="" value="{{customer.email}}"class="form-control form-control-sm" placeholder="" aria-describedby="helpId" required>
                         </div>
-                        
-                        <hr>
-                        <!-- button -->
-                        <div class="form-group mx-auto">
-                            <input class="btn btn-outline-info border rounded col-lg-7" type="submit" value="Update">
+                    </div>
+                </div>
+                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="row gutters">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <h6 class="mb-3 text-primary">Personal Details</h6>
+                                </div>
+                                    <form action="/edit_profile/{{customer.id}}" method="POST">
+                                        {% csrf_token %}
+                                        <div class="row gutters">
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="first_name">First Name</label>
+                                                    <input  type="text" class="form-control" name="first_name" value="{{customer.first_name}}" placeholder="Enter full name">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="last_name">Last Name</label>
+                                                    <input  type="text" class="form-control" name="last_name" value="{{customer.last_name}}" placeholder="Enter email ID">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="phone">Phone</label>
+                                                    <input type="number" class="form-control" name="phone" value="{{customer.phone}}" placeholder="Enter phone number">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="email">Email</label>
+                                                    <input  type="email" class="form-control" name="email" value="{{customer.email}}" placeholder="Website url">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row gutters">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                            <h6 class="mb-3 text-primary">Others</h6>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label for="city">City</label>
+                                                <input  type="text" class="form-control" name="city" value="{{customer.city}}" placeholder="Enter City">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label for="street">Street</label>
+                                                <input  type="text" class="form-control" name="street" value="{{customer.street}}" placeholder="Enter Street">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label for="birthdate">Birthdate</label>
+                                                <input  type="date" class="form-control" name="birthdate" value="{{customer.birthdate}}" placeholder="Enter Birthdate">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label for="gender">Gender</label>
+                                                <input  type="text" class="form-control" name="gender" value="{{customer.gender}}" placeholder="Gender">
+                                            </div>
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="text-right">
+                                                    <button type="submit" name="submit" class="btn  rounded-pill btn-lg- btn-custom text-uppercase">Save CHanges</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                
+                            </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </body>
 </html>
+
 {% endblock %}

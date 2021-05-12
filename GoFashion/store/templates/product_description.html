@@ -17,14 +17,23 @@
     <!-- card -->
     <div class="container-fluid mt-3">
       <div class="row">
-        <!-- all products -->
-        <div id="products" class="col-lg-9 mx-auto">
+        
+
+        <!-- image -->
+        <div id="products-image" class="col-lg-7 mx-auto">
+          <div class="card mx-auto mb-3" id="{{ product.id }}" style="width: 25rem;">
+            <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
+          </div>
+        </div>
+
+        <!-- description -->
+        <div id="products-description" class="col-lg-5 mx-auto">
           <div class="row mx-auto">
-              <div class="card mx-auto mb-3" id="{{ product.id }}" style="width: 18rem;">
-                <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
+              <div class="card mx-auto mb-3" id="{{ product.id }}" style="width: 25rem;">
                 <div class="card-body">
-                  <p class="card-title">{{ product.name }}</p>
-                  <p class="card-text"><b>{{ product.price|currency }}, Stars:{{ product.get_rating|floatformat:1 }}</b></p>
+                  <h2 class="card-title pname">{{ product.name }}</h2>
+                  <h3 class="card-text"><b>{{ product.price|currency }}</b></h3>
+                  <h3 class="card-text"><b>Stars:{{ product.get_rating|floatformat:1 }}</b></h3>
                   <p class="card-text"><b>{{ product.description }}</b></p>
                   <!-- {{ product | is_in_cart:request.session.cart }} -->
                 </div>
