@@ -24,7 +24,7 @@ class OrderAdmin(admin.ModelAdmin):
 
 
 class ProductReviewRatingAdmin(admin.ModelAdmin):
-    list_display = ['customer', 'product', 'content', 'stars']
+    list_display = ['id', 'customer', 'product', 'content', 'stars']
 
 
 # Register your models here.

@@ -7,133 +7,202 @@
 {% load cart %}
 {% load custom_filter_for_currency %}
 <html>
-  <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-        crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{% static '/css/style.css/' %}">
-    <title>GoFashion | ProductDescription</title>
-  </head>
-  <body>
-    <!-- card -->
-    <div class="container-fluid mt-3">
-      <div class="row">
-        
 
-        <!-- image -->
-        <div id="products-image" class="col-lg-7 mx-auto">
-          <div class="card mx-auto mb-3" id="{{ product.id }}" style="width: 25rem;">
-            <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
-          </div>
-        </div>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{% static '/css/style.css/' %}">
+  <title>GoFashion | ProductDescription</title>
+</head>
 
-        <!-- description -->
-        <div id="products-description" class="col-lg-5 mx-auto">
-          <div class="row mx-auto">
-              <div class="card mx-auto mb-3" id="{{ product.id }}" style="width: 25rem;">
-                <div class="card-body">
-                  <h2 class="card-title pname">{{ product.name }}</h2>
-                  <h3 class="card-text"><b>{{ product.price|currency }}</b></h3>
-                  <h3 class="card-text"><b>Stars:{{ product.get_rating|floatformat:1 }}</b></h3>
-                  <p class="card-text"><b>{{ product.description }}</b></p>
-                  <!-- {{ product | is_in_cart:request.session.cart }} -->
-                </div>
-                
-                <!-- for add to cart -->
-                <div class="card-footer p-0 no-gutters">
-                    {% if product|is_in_cart:request.session.cart %}
-                      <div class="row no-gutters">
-                        <!-- removing product in cart -->
-                        <form action="/product_description/{{ product.id }}" class="col-2" method="post">
-                          {% csrf_token %}
-                          <input hidden type="text" name="product" value="{{ product.id }}">
-                          <input hidden type="text" name="remove" value="True">
-                          <input type="submit" value="-" class="btn btn-block btn-secondary">
-                        </form>
-      
-                        <div class="text-center col">
-                          {{ product|product_quantity_in_cart:request.session.cart }} in Cart
-                        </div>
-                        
-                        <!-- adding product in cart -->
-                        <form action="/product_description/{{ product.id }}" class="col-2" method="post">
-                          {% csrf_token %}
-                          <input hidden type="text" name="product" value="{{ product.id }}">
-                          <input type="submit" value="+" class="btn btn-block btn-secondary">
-                        </form>
-                      </div>
-                    {% else %}
-                    <form action="/product_description/{{ product.id }}" method="POST" class="btn-block">
-                        {% csrf_token %}
-                        <input hidden type="text" name="product" value="{{ product.id }}">
-                        <input type="submit" class="float-right btn btn-light border form-control" value="Add To Cart">
-                    </form>
-                    {% endif %} 
-                </div>
-              </div>
-          </div>  
-
-
-          <!-- product rating and review -->
-          <hr>
-          <h2 class="subtitle">Reviews</h2>
-          <div class="reviews-wrapper">
-            {% for review in product.reviews.all %}
-              <div class="notification">
-                <p>
-                  <strong>Date: </strong>{{ review.date_added | date:"Y-m-d" }},
-                  <strong>Stars: </strong>{{ review.stars }}
-                  <strong>Content: </strong>{{ review.content }}
-                </p>
-              </div>
-              
-            {% empty %}
-              <div class="notification">
-                No reviews yet...
-              </div>
-            {% endfor %}
-          </div>
-
-          <div class="notification">
-            {% if request.session.customer %}
-              <form method="POST" action="/product_review_rating/{{ product.id }}">
-                {% csrf_token %}
-                <div class="field">
-                  <label>Stars</label>
-
-                  <div class="control">
-                    <div class="select">
-                      <select name="stars">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="field">
-                  <label">Content</label>
-
-                  <div class="control">
-                    <textarea name="content" class="textarea"></textarea>
-                  </div>
-                </div>
-
-                <div class="field">
-                  <div class="control">
-                    <button class="btn btn-outline-info my-2 my-sm-0">Submit</button>
-                  </div>
-                </div>
-              </form>
-            {% else %}
-              <p>Please <a href="/signup">register</a> or <a href="/login">login</a> to add review.</p>
-            {% endif %}
-          </div>
+<body>
+  <!-- card -->
+  <div class="container-fluid mt-3">
+    <div class="row justify-content-between mb-5">
+      <!-- image -->
+      <div id="products-image" class="col-lg-5 mx-auto">
+        <div class="card mx-auto mb-3" id="{{ product.id }}" style="width: 25rem;">
+          <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
         </div>
       </div>
+
+      <!-- description -->
+      <div id="products-description" class="col-lg-6 mx-auto">
+        <div class="row mx-auto">
+          <div class="card mx-auto mb-3" id="{{ product.id }}">
+            <div class="card-body">
+              <h2 class="card-title pname">{{ product.name }}</h2>
+              <h3 class="card-text"><b>{{ product.price|currency }}</b></h3>
+              <span class="rating">
+                <span class="rating-text">Average Rating: </span>
+                <i
+                  class='fa fa-star{% if product.get_rating < 1 %}-o empty{% endif %} {% if product.get_rating > 0.5 and product.get_rating < 1 %}fa-star-half-o{% endif %}'></i>
+                <i
+                  class='fa fa-star{% if product.get_rating < 2 %}-o empty{% endif %} {% if product.get_rating > 1.5 and product.get_rating < 2 %}fa-star-half-o{% endif %}'></i>
+                <i
+                  class='fa fa-star{% if product.get_rating < 3 %}-o empty{% endif %} {% if product.get_rating > 2.5 and product.get_rating < 3 %}fa-star-half-o{% endif %}'></i>
+                <i
+                  class='fa fa-star{% if product.get_rating < 4 %}-o empty{% endif %} {% if product.get_rating > 3.5 and product.get_rating < 4 %}fa-star-half-o{% endif %}'></i>
+                <i
+                  class='fa fa-star{% if product.get_rating < 5 %}-o empty{% endif %} {% if product.get_rating > 4.5 and product.get_rating < 5 %}fa-star-half-o{% endif %}'></i>
+              </span>
+              <hr>
+              <p class="card-text text-justify"><b>{{ product.description }}</b></p>
+              <p class="text-justify"> <b>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis atque
+                  veritatis corporis nobis, iste eos pariatur quibusdam eligendi nulla, architecto dignissimos ducimus,
+                  ut quos asperiores. Itaque non magni nobis voluptates!</b> </p>
+              <!-- {{ product | is_in_cart:request.session.cart }} -->
+            </div>
+
+            <!-- for add to cart -->
+            <div class="card-footer p-0 no-gutters">
+              {% if product|is_in_cart:request.session.cart %}
+              <div class="row no-gutters">
+                <!-- removing product in cart -->
+                <form action="/product_description/{{ product.id }}" class="col-2" method="post">
+                  {% csrf_token %}
+                  <input hidden type="text" name="product" value="{{ product.id }}">
+                  <input hidden type="text" name="remove" value="True">
+                  <input type="submit" value="-" class="btn btn-block btn-secondary">
+                </form>
+
+                <div class="text-center col">
+                  {{ product|product_quantity_in_cart:request.session.cart }} in Cart
+                </div>
+
+                <!-- adding product in cart -->
+                <form action="/product_description/{{ product.id }}" class="col-2" method="post">
+                  {% csrf_token %}
+                  <input hidden type="text" name="product" value="{{ product.id }}">
+                  <input type="submit" value="+" class="btn btn-block btn-secondary">
+                </form>
+              </div>
+              {% else %}
+              <form action="/product_description/{{ product.id }}" method="POST" class="btn-block">
+                {% csrf_token %}
+                <input hidden type="text" name="product" value="{{ product.id }}">
+                <input type="submit" class="float-right btn btn-light border form-control" value="Add To Cart">
+              </form>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+
+
+
+      </div>
+
     </div>
-  </body>
+  </div>
+  {% if recommend %}
+  <div class="row mx-auto">
+    <h3 class="text-center w-100 mb-4" >Recommended Products</h3>
+    {% for product in recommend %}
+    <div class="card mx-auto mb-3" id="{{ product.id }}" style="width: 18rem;">
+      <a href="/product_description/{{ product.id }}" class="product-image">
+        <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
+      </a>
+      <div class="card-body">
+        <a href="/product_description/{{ product.id }}" class="btn btn-block">
+          <p class="card-title">{{ product.name }}</p>
+        </a>
+        <p class="card-text"><b>{{ product.price|currency }}</b></p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+
+  <div class="row justify-content-start mb-4">
+    <div class="container">
+      <!-- product rating and review -->
+      <hr>
+      <h2 class="subtitle w-100">Reviews</h2>
+      <div class="d-flex justify-content-between">
+        <div class="reviews-wrapper col-6">
+          {% for review in product.reviews.all %}
+          <!-- <div class="notification">
+            <p>
+              <strong>Date: </strong>{{ review.date_added | date:"Y-m-d" }},
+
+            
+            <strong>Review: </strong>{{ review.content }}
+            <strong>Rated User: </strong>{{ review.customer.email }}
+            </p>
+          </div> -->
+          <div class="card card-inner mb-3">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <p class="mb-0"><a href="#"><strong>{{ review.customer.email }}</strong></a></p>
+                    <div class="d-flex align-items-center">
+                      <i class="fa fa-star{% if review.stars < 1 %}-o empty{% endif %} mr-1"></i>
+                      <i class="fa fa-star{% if review.stars < 2 %}-o empty{% endif %} mr-1"></i>
+                      <i class="fa fa-star{% if review.stars < 3 %}-o empty{% endif %} mr-1"></i>
+                      <i class="fa fa-star{% if review.stars < 4 %}-o empty{% endif %} mr-1"></i>
+                      <i class="fa fa-star{% if review.stars < 5 %}-o empty{% endif %}"></i>
+                    </div>
+                  </div>
+                  <p class="text-justify">{{ review.content }}</p>
+                  <p class="text-secondary text-right">{{ review.date_added | date:"Y-m-d" }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {% empty %}
+          <div class="notification">
+            No reviews yet...
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="notification col-5 px-3">
+          {% if request.session.customer %}
+          <form method="POST" action="/product_review_rating/{{ product.id }}">
+            {% csrf_token %}
+            <div class="field">
+              <label">Write your reviews here!</label>
+
+                <div class="control">
+                  <textarea name="content" class="textarea" style="height: 200px; width: 100%;"></textarea>
+                </div>
+            </div>
+
+            <div class="field">
+              <label>Stars: </label>
+              <div class="control d-inline-block">
+                <div class="select">
+                  <select name="stars" style="width: 45px;">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="control">
+                <button class="btn my-2 my-sm-0 btn-custom">Submit</button>
+              </div>
+            </div>
+          </form>
+          {% else %}
+          <p>Please <a href="/signup">register</a> or <a href="/login">login</a> to add review.</p>
+          {% endif %}
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </div>
+</body>
+
 </html>
 {% endblock %}

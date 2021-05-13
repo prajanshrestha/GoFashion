@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.views import View
 
 from store.models.product import Product
+from store.views.product_review_rating import recommendation
 
 
 class ProductDescription(View):
@@ -11,8 +12,23 @@ class ProductDescription(View):
         if not cart:
             request.session['cart'] = {}
         product = Product.objects.filter(id=ids)
+        print(product)
 
-        return render(request, 'product_description.html', {'product': product[0]})
+        for item in product:
+            # recommendation of product
+            recommended = recommendation(item.name, request.session.get('customer'), item.id)
+            product_object_list = []
+            if recommended is not None:
+
+                for items in range(len(recommended)):
+                    item = Product.objects.get(name=recommended[items])
+                    product_object_list.append(item)
+            print(product_object_list)
+            data = {
+                'product': product[0],
+                'recommend': product_object_list
+            }
+        return render(request, 'product_description.html', data)
 
     def post(self, request, ids):
         product = request.POST.get('product')

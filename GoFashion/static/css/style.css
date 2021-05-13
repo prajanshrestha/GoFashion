@@ -10,6 +10,7 @@ body{
   font-size: 16px;
   background: #eee;
   color:#666;
+  overflow-x: hidden;
 }
 
 /* signup and login */
@@ -77,4 +78,9 @@ body{
 /* to make name bold in product description */
 .pname {
   font-weight: bold;
+}
+
+/* for stars */
+.fa-star, .fa-star-half-o, .fa .fa-star {
+  color: #FFB656 !important;
 }
